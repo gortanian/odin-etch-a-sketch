@@ -10,6 +10,7 @@ document.body.addEventListener("mouseup", () => mouseDown = false);
 const gridCells = document.querySelectorAll(".grid-cell");
 for (const gridCell of gridCells) {
     gridCell.addEventListener("mouseover", cellEventFunction);
+    gridCell.addEventListener("mousedown", changeCell);
 }
 
 
@@ -41,6 +42,10 @@ function cellEventFunction(e) {
     // when this function is called, I want to change the color of the gridCell it was called on. 
     console.log(e.target);
     if (mouseDown) {
-        e.target.style.background = "black";
+        changeCell(e);
     }
+}
+
+function changeCell(e) {
+    e.target.style.background = "black";
 }
