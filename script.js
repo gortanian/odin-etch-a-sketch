@@ -1,5 +1,11 @@
 makeGrid(16);
 
+// check if the mouse is down
+let mouseDown = false; 
+document.body.addEventListener("mousedown", () => mouseDown = true);
+document.body.addEventListener("mouseup", () => mouseDown = false);
+
+
 // add event listeners to all of the grid cells, running a function when they're hovered over
 const gridCells = document.querySelectorAll(".grid-cell");
 for (const gridCell of gridCells) {
@@ -34,5 +40,7 @@ function makeGrid(gridSize) {
 function cellEventFunction(e) {
     // when this function is called, I want to change the color of the gridCell it was called on. 
     console.log(e.target);
-    e.target.style.background = "black";
+    if (mouseDown) {
+        e.target.style.background = "black";
+    }
 }
