@@ -1,4 +1,4 @@
-makeGrid(16);
+makeGrid(20);
 
 // check if the mouse is down
 let mouseDown = false; 
@@ -40,7 +40,6 @@ function makeGrid(gridSize) {
 
 function cellEventFunction(e) {
     // when this function is called, I want to change the color of the gridCell it was called on. 
-    console.log(e.target);
     if (mouseDown) {
         changeCell(e);
     }

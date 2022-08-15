@@ -13,7 +13,6 @@
 
 .grid-cell {
     display: flex;
-    border: 1px solid black;
     align-items: stretch;
     flex: 1;
 }
