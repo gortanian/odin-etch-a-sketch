@@ -1,5 +1,12 @@
 makeGrid(16);
 
+// add event listeners to all of the grid cells, running a function when they're hovered over
+const gridCells = document.querySelectorAll(".grid-cell");
+for (const gridCell of gridCells) {
+    gridCell.addEventListener("mouseover", cellEventFunction);
+}
+
+
 // create a gridSize by gridSize div grid inside the grid container
 function makeGrid(gridSize) {
 
@@ -19,8 +26,13 @@ function makeGrid(gridSize) {
             // make a grid cell inside of gridRowContainer
             const gridCell = gridRowContainer.appendChild(document.createElement("div"));
             gridCell.className = "grid-cell";
+
         }
     }
+}
 
-
+function cellEventFunction(e) {
+    // when this function is called, I want to change the color of the gridCell it was called on. 
+    console.log(e.target);
+    e.target.style.background = "black";
 }
