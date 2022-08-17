@@ -50,6 +50,8 @@ function makeGrid(gridSize) {
             const gridCell = gridRowContainer.appendChild(document.createElement("div"));
             gridCell.className = "grid-cell";
             
+            // initialize grid cell color
+            gridCell.style.backgroundColor = "white";
         }
     }
 
@@ -70,5 +72,38 @@ function cellEventFunction(e) {
 }
 
 function changeCell(e) {
-    e.target.style.background = "black";
+    let currentColor = e.target.style.backgroundColor;
+    if (currentColor === "white") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.1)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.2)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.3)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.3)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.4)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.5)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.6)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.6)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.7)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.8)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.8)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.9)"
+    }
+    else if (currentColor === "rgba(0, 0, 0, 0.9)") {
+        e.target.style.backgroundColor = "rgba(0, 0, 0, 1)"
+    }
+    else {
+        e.target.style.backgroundColor = "black";
+    }
 }
