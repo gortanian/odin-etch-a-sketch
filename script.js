@@ -6,9 +6,9 @@ boxDimensions.textContent = `${initialGridSize} x ${initialGridSize}`;
 
 
 // check if the mouse is down
-let mouseDown = false;
-document.body.addEventListener("mousedown", () => mouseDown = true);
-document.body.addEventListener("mouseup", () => mouseDown = false);
+let pointerDown = false;
+document.body.addEventListener("pointerdown", () => pointerDown = true);
+document.body.addEventListener("pointerup", () => pointerDown = false);
 
 // check for the slider input change, remaking the grid if it changes
 const slider = document.querySelector(".slider");
@@ -45,8 +45,8 @@ function makeGrid(gridSize) {
             gridCell.style.backgroundColor = "white";
 
             // add the appropriate event listener to the cell
-            gridCell.addEventListener("mouseover", cellEventFunction);
-            gridCell.addEventListener("mousedown", changeCell);
+            gridCell.addEventListener("pointerover", cellEventFunction);
+            gridCell.addEventListener("pointerdown", changeCell);
         }
     }
 
@@ -54,7 +54,7 @@ function makeGrid(gridSize) {
 
 function cellEventFunction(e) {
     // when this function is called, I want to change the color of the gridCell it was called on. 
-    if (mouseDown) {
+    if (pointerDown) {
         changeCell(e);
     }
 }
