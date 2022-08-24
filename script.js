@@ -18,16 +18,7 @@ slider.addEventListener("input", function (e) {
     boxDimensions.textContent = `${e.target.value} x ${e.target.value}`;
 });
 
-
-// add event listeners to all of the grid cells, running a function when they're hovered over
-const gridCells = document.querySelectorAll(".grid-cell");
-for (const gridCell of gridCells) {
-    gridCell.addEventListener("mouseover", cellEventFunction);
-    gridCell.addEventListener("mousedown", changeCell);
-}
-
-
-// create a gridSize by gridSize div grid inside the grid container
+// create a (gridSize x gridSize) div grid 
 function makeGrid(gridSize) {
 
     // make a grid container, and empty it
@@ -52,14 +43,11 @@ function makeGrid(gridSize) {
             
             // initialize grid cell color
             gridCell.style.backgroundColor = "white";
-        }
-    }
 
-    // add the appropriate event listeners to all the cells
-    const gridCells = document.querySelectorAll(".grid-cell");
-    for (const gridCell of gridCells) {
-        gridCell.addEventListener("mouseover", cellEventFunction);
-        gridCell.addEventListener("mousedown", changeCell);
+            // add the appropriate event listener to the cell
+            gridCell.addEventListener("mouseover", cellEventFunction);
+            gridCell.addEventListener("mousedown", changeCell);
+        }
     }
 
 }
