@@ -15,4 +15,6 @@
     display: flex;
     align-items: stretch;
     flex: 1;
+    user-select: none;
 }
+

@@ -45,21 +45,19 @@ function makeGrid(gridSize) {
             gridCell.style.backgroundColor = "white";
 
             // add the appropriate event listener to the cell
-            gridCell.addEventListener("pointerover", cellEventFunction);
+            gridCell.addEventListener("pointerover", changeCell);
             gridCell.addEventListener("pointerdown", changeCell);
         }
     }
 
 }
 
-function cellEventFunction(e) {
-    // when this function is called, I want to change the color of the gridCell it was called on. 
-    if (pointerDown) {
-        changeCell(e);
-    }
-}
-
 function changeCell(e) {
+
+    if (e.type === 'pointerover' && !pointerDown) {
+        return;
+    }
+
     let currentColor = e.target.style.backgroundColor;
     if (currentColor === "white") {
         e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)"
