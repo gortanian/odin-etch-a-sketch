@@ -12,7 +12,6 @@ document.body.addEventListener("pointerup", () => pointerDown = false);
 
 // check for the slider input change, remaking the grid if it changes
 const slider = document.querySelector(".slider");
-
 slider.addEventListener("input", function (e) { 
     makeGrid(e.target.value);
     boxDimensions.textContent = `${e.target.value} x ${e.target.value}`;
@@ -29,7 +28,7 @@ function makeGrid(gridSize) {
         makeGridRow(gridSize);
     }
 
-    // make a row of divs gridsize long inside the grid container, each with a classname of grid-cell
+    // make a row of divs inside the grid container, each with a classname of grid-cell
     function makeGridRow(gridSize) {
 
         // make a grid row container
@@ -42,7 +41,7 @@ function makeGrid(gridSize) {
             gridCell.className = "grid-cell";
             
             // initialize grid cell color
-            gridCell.style.backgroundColor = "white";
+            gridCell.style.backgroundColor = "rgba(0, 0, 0, 0)";
 
             // add the appropriate event listener to the cell
             gridCell.addEventListener("pointerover", changeCell);
@@ -53,43 +52,23 @@ function makeGrid(gridSize) {
 }
 
 function changeCell(e) {
-
-    if (e.type === 'pointerover' && !pointerDown) {
+    if(e.type === 'pointerover' && !pointerDown) {
         return;
     }
 
+    // adds 0.1 to the opacity value of the rgba background color
     let currentColor = e.target.style.backgroundColor;
-    if (currentColor === "white") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)"
+    if (currentColor.slice(0, 4) === "rgba") {
+        let beginningIndex = currentColor.lastIndexOf(",");
+        let endingIndex = currentColor.lastIndexOf(")");
+        let opacityString = currentColor.slice(beginningIndex + 2, endingIndex);
+
+        let opacityNumber = parseFloat(opacityString);
+        opacityNumber += 0.1;
+
+        let newColor = currentColor.slice(0, currentColor.lastIndexOf(",") + 1) + " " + opacityNumber + ")";
+
+        e.target.style.backgroundColor = newColor;
     }
-    else if (currentColor === "rgba(0, 0, 0, 0.1)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.2)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.3)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.3)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.4)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.5)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.6)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.6)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.7)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.8)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.8)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 0.9)"
-    }
-    else if (currentColor === "rgba(0, 0, 0, 0.9)") {
-        e.target.style.backgroundColor = "rgba(0, 0, 0, 1)"
-    }
-    else {
-        e.target.style.backgroundColor = "black";
-    }
+
 }
